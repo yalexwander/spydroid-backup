@@ -2,13 +2,14 @@
 
 $opts = getopt("u:d:", [], $restIndex);
 
-$archiveUrl = $opts["u"];
-$storeDir = $opts["d"];
 
-if (empty($archiveUrl) or empty($storeDir)) {
+if (empty($opts["u"]) or empty($opts["d"])) {
     print "Usage:\n";
     print "php spydroid-backup.php -u <archive-url> -d <backup-directory>\n";
 }
+
+$archiveUrl = $opts["u"];
+$storeDir = $opts["d"];
 
 $archiveData = json_decode(file_get_contents($archiveUrl), true);
 
